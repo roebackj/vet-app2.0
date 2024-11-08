@@ -1,6 +1,7 @@
 // src/components/graphService.js 
 import { msalInstance, loginRequest } from './msalInstance';
 
+// Utility function to handle Graph API fetch calls
 export const graphApiFetch = async (url, method = 'GET', body = null) => {
     try {
         const account = msalInstance.getAllAccounts()[0];
@@ -36,20 +37,33 @@ export const graphApiFetch = async (url, method = 'GET', body = null) => {
     }
 };
 
-export const fetchChannels = async (teamId) => {
-    return graphApiFetch(`/teams/${teamId}/channels`);
-};
-
-export const fetchFolders = async (driveId) => {
-    return graphApiFetch(`/drives/${driveId}/root/children`);
-};
-
+// Fetch the children of a SharePoint folder (documents or other items)
 export const fetchChildren = async (driveId, itemId) => {
     return graphApiFetch(`/drives/${driveId}/items/${itemId}/children`);
 };
 
-export const fetchFolderContents = async (folderId) => {
-    return graphApiFetch(`/drives/{driveId}/items/${folderId}/children`);
+// Fetch PDF files from a specific SharePoint folder
+export const fetchPdfsFromFolder = async (siteId, driveId, folderId) => {
+    try {
+        const data = await fetchChildren(driveId, folderId);
+        // Filter for PDF files
+        const pdfs = data.value.filter(item => item.name.endsWith('.pdf'));
+        return pdfs;
+    } catch (error) {
+        console.error('Error fetching PDFs:', error);
+        return []; // Return empty array in case of error
+    }
+};
+
+// Get the direct download URL of a file
+export const getFileDownloadUrl = async (driveId, fileId) => {
+    try {
+        const response = await graphApiFetch(`/drives/${driveId}/items/${fileId}`);
+        return response['@microsoft.graph.downloadUrl']; // This URL is direct and can be used in an iframe
+    } catch (error) {
+        console.error('Error fetching file download URL:', error);
+        return null;
+    }
 };
 
 export const getExcelFileDownloadUrl = async (driveId, folderId) => {
