@@ -14,21 +14,21 @@ body {
 .content {
     width: 80%;
     margin: 20px auto;
-    padding: 90px 25px 25px; /* Increased padding for more space */
+    padding: 90px 25px 25px;
     background-color: rgb(255, 255, 255);
     border-radius: 30px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
-    align-items: center; 
+    align-items: center;
     justify-content: center;
-    text-align: center; 
+    text-align: center;
 }
 
 .company-logo {
     width: 100%;
-    max-width: 240px; /* Adjust based on your logo size */
-    margin: 0px auto 10px; /* Added top margin */
+    max-width: 240px;
+    margin: 0px auto 10px;
     display: block;
 }
 
@@ -50,7 +50,7 @@ p {
 
 .data-table th,
 .data-table td {
-    padding: 12px; /* Increased padding for better spacing */
+    padding: 12px;
     text-align: center;
     border: 2px solid black;
     font-size: 20px;
@@ -60,36 +60,34 @@ p {
     color: white;
 }
 
-/* Set the specific widths for each column */
 .data-table th:first-child,
 .data-table td:first-child {
-    width: 12%; /* Name column - 25% of the table width */
+    width: 12%;
 }
 
 .data-table th:nth-child(2),
 .data-table td:nth-child(2) {
-    width: 10%; /* Student ID column - 15% */
+    width: 10%;
 }
 
 .data-table th:nth-child(3),
 .data-table td:nth-child(3) {
-    width: 15%; /* Benefit column - 10% */
+    width: 15%;
 }
 
 .data-table th:nth-child(4),
 .data-table td:nth-child(4) {
-    width: 43%; /* Required Documents column - 30% */
+    width: 43%;
 }
-
 
 .data-table tr:hover {
     background-color: #f1f1f1;
 }
 
 .red-header {
-    background-color: red; /* Sets the background color to red */
-    color: white; /* Sets the text color to white for better contrast */
-    padding: 10px; /* Adds some padding for better spacing */
+    background-color: red;
+    color: white;
+    padding: 10px;
 }
 
 .benefit-box {
@@ -99,12 +97,12 @@ p {
     margin-left: 5px;
     border-radius: 5px;
     transition: background-color 0.3s ease;
-    max-width: 200px; /* Limiting width to make it more narrow */
-    word-wrap: break-word; /* Prevent text overflow */
-    white-space: normal; /* Allow text to wrap inside the box */
+    max-width: 200px;
+    word-wrap: break-word;
+    white-space: normal;
     display: inline-flex;
     align-items: center;
-    height: 30px; /* Set a fixed height to align with checkboxes */
+    height: 30px;
 }
 
 .benefit-box.active {
@@ -116,7 +114,7 @@ p {
     display: flex;
     align-items: center;
     margin-top: 10px;
-    gap: 5px; /* Adjust space between checkbox and text */
+    gap: 5px;
 }
 
 .date-box {
@@ -137,22 +135,125 @@ p {
     display: flex;
     align-items: center;
     margin-top: 5px;
-    gap: 5px; /* Reducing gap to bring checkbox closer */
+    gap: 5px;
 }
 
 .checkbox-container input[type="checkbox"] {
-    margin: 0; /* Removes extra spacing around the checkbox */
-    width: 20px; /* Ensure width of checkbox is uniform */
-    height: 20px; /* Ensure height of checkbox is uniform */
+    margin: 0;
+    width: 20px;
+    height: 20px;
 }
 
 .checkbox-container label {
     margin: 0;
-    padding-left: 5px; /* Adjust padding to bring the label closer to checkbox */
-    white-space: nowrap; /* Prevent text from wrapping */
+    padding-left: 5px;
+    white-space: nowrap;
 }
 
 .secure-page-container {
-    margin-top: 150px; /* Adjust this value to move it down further or less */
-    padding: 20px; /* Optional: Add some padding for aesthetics */
+    margin-top: 150px;
+    padding: 20px;
+}
+
+.edit-button {
+    background-color: #808080;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.edit-button:hover {
+    background-color: #5a5a5a;
+}
+
+.save-button {
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.save-button:hover {
+    background-color: #0b7dda;
+}
+
+.cancel-button {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.cancel-button:hover {
+    background-color: #e53935;
+}
+
+.benefit-label {
+    font-size: 20px;
+}
+
+.benefits-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .content {
+        width: 90%;
+        padding: 60px 15px 15px;
+    }
+
+    .benefits-container {
+        grid-template-columns: repeat(1, 1fr); /* Single column for smaller screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .content {
+        padding: 40px 10px 10px;
+    }
+
+    .data-table th, .data-table td {
+        font-size: 16px; /* Smaller text for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+
+    .content {
+        padding: 20px 5px;
+    }
+
+    .benefit-box {
+        height: auto; /* Allow boxes to adjust height dynamically */
+        font-size: 14px; /* Smaller font size */
+    }
+
+    .edit-button,
+    .save-button,
+    .cancel-button {
+        padding: 6px 8px;
+        font-size: 12px;
+    }
 }
