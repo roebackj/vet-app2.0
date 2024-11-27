@@ -114,4 +114,4 @@ const getDateFromExcel = async (studentId) => {
 };
 
 // Export the functions for use in other parts of the app
-export { postDateToExcel, getDateFromExcel };
+export { postDateToExcel, getDateFromExcel }; 
